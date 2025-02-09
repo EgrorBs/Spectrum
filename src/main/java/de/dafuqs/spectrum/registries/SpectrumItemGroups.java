@@ -1238,6 +1238,7 @@ public class SpectrumItemGroups {
 		entries.add(SpectrumItems.MUSIC_DISC_DISCOVERY);
 		entries.add(SpectrumItems.MUSIC_DISC_CREDITS);
 		entries.add(SpectrumItems.MUSIC_DISC_DIVINITY);
+		entries.add(SpectrumItems.MUSIC_DISC_DORMANT_SANCTUARY);
 	}).build();
 	
 	public static final ItemSubGroup COLORED_WOOD = new ItemSubGroup.Builder(MAIN, ItemGroupIDs.SUBTAB_COLORED_WOOD, Text.translatable("itemGroup.spectrum.colored_wood")).backgroundTexture(ItemGroupIDs.BACKGROUND_TEXTURE).entries((displayContext, entries) -> {

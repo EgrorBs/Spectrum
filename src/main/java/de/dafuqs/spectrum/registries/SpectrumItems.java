@@ -446,6 +446,7 @@ public class SpectrumItems {
 	public static final Item MUSIC_DISC_DISCOVERY = new MusicDiscItem(1, SpectrumSoundEvents.MUSIC_DISCOVERY, IS.of(1, Rarity.RARE), 120);
 	public static final Item MUSIC_DISC_CREDITS = new MusicDiscItem(2, SpectrumSoundEvents.MUSIC_CREDITS, IS.of(1, Rarity.RARE), 265);
 	public static final Item MUSIC_DISC_DIVINITY = new MusicDiscItem(3, SpectrumSoundEvents.MUSIC_DIVINITY, IS.of(1, Rarity.RARE), 289);
+	public static final Item MUSIC_DISC_DORMANT_SANCTUARY = new MusicDiscItem(4, SpectrumSoundEvents.DISC_DORMANT_SANCTUARY, IS.of(1, Rarity.RARE), 468);
 	
 	public static final Item PHANTOM_FRAME = new PhantomFrameItem(SpectrumEntityTypes.PHANTOM_FRAME, IS.of());
 	public static final Item GLOW_PHANTOM_FRAME = new PhantomGlowFrameItem(SpectrumEntityTypes.GLOW_PHANTOM_FRAME, IS.of());
@@ -562,6 +563,7 @@ public class SpectrumItems {
 		register("music_disc_discovery", MUSIC_DISC_DISCOVERY, DyeColor.GREEN);
 		register("music_disc_credits", MUSIC_DISC_CREDITS, DyeColor.GREEN);
 		register("music_disc_divinity", MUSIC_DISC_DIVINITY, DyeColor.GREEN);
+		register("music_disc_dormant_sanctuary", MUSIC_DISC_DORMANT_SANCTUARY, DyeColor.PURPLE);
 	}
 	
 	public static void registerSpawningStuff() {

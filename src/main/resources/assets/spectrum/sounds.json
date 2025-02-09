@@ -506,6 +506,15 @@
     ]
   },
 
+	"ost.disc.dormant_sanctuary": {
+		"sounds": [
+			{
+				"name": "spectrum:ost/disc/dormant_sanctuary",
+				"stream": true
+			}
+		]
+	},
+
   "music.discovery": {
     "sounds": [
       {
