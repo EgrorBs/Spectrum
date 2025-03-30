@@ -21,6 +21,7 @@ import de.dafuqs.spectrum.blocks.decoration.*;
 import de.dafuqs.spectrum.blocks.deeper_down.*;
 import de.dafuqs.spectrum.blocks.deeper_down.flora.*;
 import de.dafuqs.spectrum.blocks.deeper_down.groundcover.*;
+import de.dafuqs.spectrum.blocks.dev.*;
 import de.dafuqs.spectrum.blocks.enchanter.*;
 import de.dafuqs.spectrum.blocks.ender.*;
 import de.dafuqs.spectrum.blocks.energy.*;
@@ -60,6 +61,7 @@ import de.dafuqs.spectrum.particle.effect.*;
 import de.dafuqs.spectrum.recipe.pedestal.*;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.*;
+import net.fabricmc.loader.api.*;
 import net.minecraft.block.*;
 import net.minecraft.block.AbstractBlock.*;
 import net.minecraft.block.enums.*;
@@ -611,6 +613,7 @@ public class SpectrumBlocks {
 	public static final Block YELLOW_BUTTON = new ColoredWoodenButtonBlock(AbstractBlock.Settings.copy(Blocks.OAK_BUTTON).mapColor(MapColor.YELLOW), InkColors.YELLOW);
 	public static final Block YELLOW_SLAB = new ColoredSlabBlock(AbstractBlock.Settings.copy(Blocks.OAK_SLAB).mapColor(MapColor.YELLOW), InkColors.YELLOW);
 	
+	public static final Block RENDER_SANDBOX;
 	
 	//DD FLORA
 	public static Settings overgrownBlackslag(MapColor color, BlockSoundGroup soundGroup) {
@@ -1675,6 +1678,9 @@ public class SpectrumBlocks {
 		registerBlockWithItem("bottomless_bundle", BOTTOMLESS_BUNDLE, new BottomlessBundleItem(BOTTOMLESS_BUNDLE, IS.of(1)), InkColors.LIGHT_GRAY);
 		
 		registerMobHeads(IS.of());
+		
+		if (FabricLoader.getInstance().isDevelopmentEnvironment())
+			registerBlock("render_sandbox", RENDER_SANDBOX);
 		
 		COMMON_REGISTRAR.flush();
 	}
@@ -3260,4 +3266,12 @@ public class SpectrumBlocks {
 		CLIENT_REGISTRAR.flush();
 	}
 	
+	static {
+		if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+			RENDER_SANDBOX = new RenderSandboxBlock(AbstractBlock.Settings.copy(Blocks.BEDROCK).noCollision());
+		}
+		else {
+			RENDER_SANDBOX = null;
+		}
+	}
 }

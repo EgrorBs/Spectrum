@@ -260,4 +260,7 @@ public class Support {
 		return Math.log(logNumber) / Math.log(base);
 	}
 	
+	public static double asinh(double value) {
+		return Math.log(value + Math.sqrt(Math.pow(value, 2) + 1.0));
+	}
 }

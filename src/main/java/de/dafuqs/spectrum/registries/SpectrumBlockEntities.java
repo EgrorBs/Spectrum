@@ -10,6 +10,7 @@ import de.dafuqs.spectrum.blocks.cinderhearth.*;
 import de.dafuqs.spectrum.blocks.crystallarieum.*;
 import de.dafuqs.spectrum.blocks.decoration.*;
 import de.dafuqs.spectrum.blocks.deeper_down.*;
+import de.dafuqs.spectrum.blocks.dev.*;
 import de.dafuqs.spectrum.blocks.enchanter.*;
 import de.dafuqs.spectrum.blocks.ender.*;
 import de.dafuqs.spectrum.blocks.energy.*;
@@ -31,6 +32,7 @@ import de.dafuqs.spectrum.blocks.spirit_sallow.*;
 import de.dafuqs.spectrum.blocks.structure.*;
 import de.dafuqs.spectrum.blocks.titration_barrel.*;
 import de.dafuqs.spectrum.blocks.upgrade.*;
+import net.fabricmc.loader.api.*;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.*;
 import net.minecraft.client.render.block.entity.*;
@@ -90,6 +92,8 @@ public class SpectrumBlockEntities {
 	public static BlockEntityType<DeepLightBlockEntity> DEEP_LIGHT;
 	public static BlockEntityType<PlayerTrackerBlockEntity> PLAYER_TRACKING;
 	
+	public static BlockEntityType<RenderSandboxBlockEntity> RENDER_SANDBOX;
+	
 	private static <T extends BlockEntity> BlockEntityType<T> register(String id, BlockEntityType.BlockEntityFactory<T> factory, Block... blocks) {
 		return Registry.register(Registries.BLOCK_ENTITY_TYPE, SpectrumCommon.locate(id), BlockEntityType.Builder.create(factory, blocks).build());
 	}
@@ -137,6 +141,9 @@ public class SpectrumBlockEntities {
 		DEEP_LIGHT = register("deep_light", DeepLightBlockEntity::new, SpectrumBlocks.DEEP_LIGHT_CHISELED_PRESERVATION_STONE);
 		PLAYER_TRACKING = register("player_tracking", PlayerTrackerBlockEntity::new, SpectrumBlocks.MANXI, SpectrumBlocks.TREASURE_ITEM_BOWL);
 
+		if (FabricLoader.getInstance().isDevelopmentEnvironment())
+			RENDER_SANDBOX = register("render_sandbox", RenderSandboxBlockEntity::new, SpectrumBlocks.RENDER_SANDBOX);
+		
 		// All the upgrades
 		List<Block> upgradeBlocksList = UpgradeBlock.getUpgradeBlocks();
 		Block[] upgradeBlocksArray = new Block[upgradeBlocksList.size()];
@@ -180,6 +187,9 @@ public class SpectrumBlockEntities {
 		BlockEntityRendererFactories.register(SpectrumBlockEntities.PLAYER_TRACKING, PlayerTrackingBlockEntityRenderer::new);
 
 		BlockEntityRendererFactories.register(SpectrumBlockEntities.PASTEL_NODE, PastelNodeBlockEntityRenderer::new);
+		
+		if (FabricLoader.getInstance().isDevelopmentEnvironment())
+			BlockEntityRendererFactories.register(SpectrumBlockEntities.RENDER_SANDBOX, RenderSandboxBlockEntityRenderer::new);
 	}
 	
 }
