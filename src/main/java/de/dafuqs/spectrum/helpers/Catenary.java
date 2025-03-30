@@ -3,6 +3,7 @@ package de.dafuqs.spectrum.helpers;
 import net.minecraft.util.math.*;
 
 //I DO NOT CARE HOW MUCH YOU PAY I AM NOT CALCULATING A
+// Also but btw this is my son, he is loved
 public class Catenary {
 	private final Vec2f slack, start;
 	private final float span, yDiff, a;
