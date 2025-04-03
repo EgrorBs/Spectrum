@@ -49,6 +49,7 @@ import de.dafuqs.spectrum.blocks.shooting_star.*;
 import de.dafuqs.spectrum.blocks.spirit_instiller.*;
 import de.dafuqs.spectrum.blocks.spirit_sallow.*;
 import de.dafuqs.spectrum.blocks.statues.*;
+import de.dafuqs.spectrum.blocks.stigmata.*;
 import de.dafuqs.spectrum.blocks.structure.*;
 import de.dafuqs.spectrum.blocks.titration_barrel.*;
 import de.dafuqs.spectrum.blocks.upgrade.*;
@@ -846,6 +847,8 @@ public class SpectrumBlocks {
 	public static final Block RESPLENDENT_CUSHION = new CushionBlock(Settings.copy(RESPLENDENT_BLOCK).nonOpaque().allowsSpawning(SpectrumBlocks::never));
 	public static final Block RESPLENDENT_CARPET = new CushionedCarpetBlock(Settings.copy(Blocks.RED_CARPET));
 	public static final Block RESPLENDENT_BED = new SpectrumBedBlock(DyeColor.RED, Settings.copy(Blocks.RED_BED));
+	
+	public static final Block STIGMATA = new StigmataBlock(dragonjag(MapColor.OFF_WHITE));
 	
 	// JADE VINES
 	public static Settings jadeVine() {
@@ -1840,6 +1843,8 @@ public class SpectrumBlocks {
 		registerBlockWithItem("giant_moss_ball", GIANT_MOSS_BALL, settings, InkColors.GREEN);
 		
 		registerBlockWithItem("varia_sprout", VARIA_SPROUT, settings, InkColors.WHITE);
+		
+		registerBlockWithItem("stigmata", STIGMATA, settings, InkColors.BROWN);
 		
 		registerBlockWithItem("hummingstone_glass", HUMMINGSTONE_GLASS, settings, InkColors.LIGHT_BLUE);
 		registerBlockWithItem("hummingstone_glass_pane", HUMMINGSTONE_GLASS_PANE, settings, InkColors.LIGHT_BLUE);
@@ -3084,6 +3089,8 @@ public class SpectrumBlocks {
 		BlockRenderLayerMap.INSTANCE.putBlock(SpectrumBlocks.POTTED_RESONANT_LILY, RenderLayer.getCutout());
 		
 		BlockRenderLayerMap.INSTANCE.putBlock(VARIA_SPROUT, RenderLayer.getCutout());
+		
+		BlockRenderLayerMap.INSTANCE.putBlock(STIGMATA, RenderLayer.getCutout());
 		
 		BlockRenderLayerMap.INSTANCE.putBlock(SpectrumBlocks.DIKE_GATE, RenderLayer.getTranslucent());
 		BlockRenderLayerMap.INSTANCE.putBlock(SpectrumBlocks.DREAM_GATE, RenderLayer.getTranslucent());

@@ -1079,6 +1079,8 @@ public class SpectrumItemGroups {
 				entries.add(SpectrumBlocks.VARIA_SPROUT);
 				entries.add(SpectrumBlocks.JADEITE_LOTUS_STEM);
 				entries.add(SpectrumBlocks.JADEITE_LOTUS_FLOWER);
+				
+				entries.add(SpectrumBlocks.STIGMATA);
 			}).build();
 	
 	public static final ItemSubGroup DECORATION = new ItemSubGroup.Builder(MAIN, ItemGroupIDs.SUBTAB_DECORATION, Text.translatable("itemGroup.spectrum.decoration"))

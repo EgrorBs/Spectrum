@@ -15,6 +15,7 @@ import de.dafuqs.spectrum.registries.client.*;
 import de.dafuqs.spectrum.render.*;
 import de.dafuqs.spectrum.render.capes.*;
 import net.fabricmc.api.*;
+import net.fabricmc.fabric.api.client.model.loading.v1.*;
 import net.fabricmc.loader.api.*;
 import net.minecraft.block.*;
 import net.minecraft.client.*;
@@ -53,6 +54,9 @@ public class SpectrumClient implements ClientModInitializer, RevealingCallback, 
 		logInfo("Setting up ItemPredicates...");
 		SpectrumModelPredicateProviders.registerClient();
 
+		logInfo("Setting up BakedModels...");
+		ModelLoadingPlugin.register(new SpectrumModelLoadingPlugin());
+		
 		logInfo("Setting up Block Entity Renderers...");
 		SpectrumBlockEntities.registerClient();
 		logInfo("Setting up Entity Renderers...");

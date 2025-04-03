@@ -6,11 +6,11 @@ import net.minecraft.util.math.*;
 // Also but btw this is my son, he is loved
 public class Catenary {
 	private final Vec2f slack, start;
-	private final float span, yDiff, a;
+	private final float a;
 	
 	public Catenary(Vec2f start, Vec2f end, float a) {
-		span = end.x - start.x;
-		yDiff = end.y - start.y;
+		var span = end.x - start.x;
+		var yDiff = end.y - start.y;
 		
 		var sX = start.x + span / 2 + a * Support.asinh(
 				(yDiff * Math.exp(span / (2 * a)))
