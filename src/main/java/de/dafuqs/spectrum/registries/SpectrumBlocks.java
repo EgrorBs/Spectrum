@@ -804,8 +804,7 @@ public class SpectrumBlocks {
 	public static final Block SAWBLADE_GRASS = register(snowy(blockWithItem("sawblade_grass", new BlackslagVegetationBlock(overgrownBlackslag(MapColor.PALE_YELLOW, BlockSoundGroup.AZALEA_LEAVES)), InkColors.LIME), SpectrumTexturedModels.cubeBottomTopParticle(b -> b, "_side", b -> b, "_top", b -> BLACKSLAG, "_top", b -> b, "_top"), SpectrumTexturedModels.cubeBottomTopParticle(b -> b, "_snow_side", b -> b, "_snow_top", b -> BLACKSLAG, "_top", b -> b, "_snow_top")));
 	public static final Block SHIMMEL = register(snowy(blockWithItem("shimmel", new BlackslagVegetationBlock(overgrownBlackslag(MapColor.TERRACOTTA_GRAY, BlockSoundGroup.WART_BLOCK)), InkColors.LIME), SpectrumTexturedModels.cubeBottomTopParticle(b -> b, "_side", b -> b, "_top", b -> BLACKSLAG, "_top", b -> BLACKSLAG, "_top"), SpectrumTexturedModels.cubeBottomTopParticle(b -> b, "_snow_side", b -> b, "_snow_top", b -> BLACKSLAG, "_top", b -> BLACKSLAG, "_top")));
 	public static final Block OVERGROWN_BLACKSLAG = register(snowy(blockWithItem("overgrown_blackslag", new BlackslagVegetationBlock(overgrownBlackslag(MapColor.DARK_GREEN, BlockSoundGroup.VINE).velocityMultiplier(0.925F)), InkColors.LIME), SpectrumTexturedModels.overgrown(b -> b, "_side", b -> b, "_top", b -> BLACKSLAG, "_top", b -> b, "_fronds"), SpectrumTexturedModels.overgrown(b -> b, "_snow_side", b -> b, "_snow_top", b -> BLACKSLAG, "_top", b -> b, "_snow_fronds")));
-	public static final Block ROTTEN_GROUND = register(blockWithItem("rotten_ground", new RottenGroundBlock(Settings.copy(MUD).mapColor(MapColor.PALE_PURPLE).sounds(BlockSoundGroup.HONEY).velocityMultiplier(0.775F).jumpVelocityMultiplier(0.9F)), InkColors.LIME).withBlockModel((ctx, block) -> VariantsBlockStateSupplier.create(block, SpectrumModelHelper.createModelVariant(TexturedModel.CUBE_ALL.upload(block, ctx.modelCollector)).put(VariantSettings.WEIGHT, 4), SpectrumModelHelper.createModelVariant(SpectrumTexturedModels.cubeAll(b -> b, "_bony").upload(block, "_bony", ctx.modelCollector)), SpectrumModelHelper.createModelVariant(SpectrumTexturedModels.cubeAll(b -> b, "_boil").upload(block, "_boil", ctx.modelCollector)))));
-	//public static final Block ROTTEN_GROUND = new RottenGroundBlock(Settings.copy(Blocks.MUD).mapColor(MapColor.PALE_PURPLE).sounds(BlockSoundGroup.HONEY).velocityMultiplier(0.25F).jumpVelocityMultiplier(0.9F));
+	public static final Block ROTTEN_GROUND = register(blockWithItem("rotten_ground", new RottenGroundBlock(Settings.copy(Blocks.MUD).mapColor(MapColor.PALE_PURPLE).sounds(BlockSoundGroup.HONEY).velocityMultiplier(0.25F).jumpVelocityMultiplier(0.9F)), InkColors.LIME).withBlockModel((ctx, block) -> VariantsBlockStateSupplier.create(block, SpectrumModelHelper.createModelVariant(TexturedModel.CUBE_ALL.upload(block, ctx.modelCollector)), SpectrumModelHelper.createModelVariant(SpectrumTexturedModels.cubeAll(b -> b, "_1").upload(block, "_1", ctx.modelCollector)), SpectrumModelHelper.createModelVariant(SpectrumTexturedModels.cubeAll(b -> b, "_2").upload(block, "_2", ctx.modelCollector)))));
 	
 	public static final float ASH_STRENGTH = 2F;
 	
@@ -1107,7 +1106,7 @@ public class SpectrumBlocks {
 	public static final Block RESPLENDENT_CARPET = register(singleton(blockWithItem("resplendent_carpet", new CushionedCarpetBlock(Settings.copy(RED_CARPET)), IS.of(Rarity.UNCOMMON), InkColors.YELLOW), TexturedModel.CARPET));
 	public static final Block RESPLENDENT_BED = register(cutout(blockWithItem("resplendent_bed", new SpectrumBedBlock(DyeColor.RED, Settings.copy(RED_BED)), IS.of(1, Rarity.UNCOMMON), InkColors.YELLOW)).withPredefinedItemModel().withBlockModel((ctx, block) -> VariantsBlockStateSupplier.create(block).coordinate(SpectrumModelHelper.createSouthDefaultHorizontalFacingVariantMap()).coordinate(BlockStateVariantMap.create(BedBlock.PART).register(BedPart.HEAD, SpectrumModelHelper.createModelVariant(block, "_head")).register(BedPart.FOOT, SpectrumModelHelper.createModelVariant(block, "_foot")))));
 	
-	public static final Block STIGMATA = new StigmataBlock(dragonjag(MapColor.OFF_WHITE));
+	public static final Block STIGMATA = register(cutout(singleton(block("stigmata", new StigmataBlock(Settings.copy(SMALL_RED_DRAGONJAG))), ModelIds::getBlockModelId)));
 	
 	// JADE VINES
 	public static Settings jadeVine() {
@@ -2291,7 +2290,7 @@ public class SpectrumBlocks {
 	
 	static {
 		if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-			RENDER_SANDBOX = new RenderSandboxBlock(AbstractBlock.Settings.copy(Blocks.BEDROCK).noCollision());
+			RENDER_SANDBOX = register(block("render_sandbox", new RenderSandboxBlock(AbstractBlock.Settings.copy(Blocks.BEDROCK).noCollision())));
 		}
 		else {
 			RENDER_SANDBOX = null;
