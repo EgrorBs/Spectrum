@@ -58,15 +58,15 @@ public class BidentMirrorImageEntity extends BidentBaseEntity {
     }
     
     private void processHit(@Nullable Entity target, float effectMult) {
-		var drm = target.getWorld().getRegistryManager();
+		var drm = getWorld().getRegistryManager();
 		var stack = getTrackedStack();
-        var power = SpectrumEnchantmentHelper.getLevel(drm, Enchantments.POWER, stack) * 0.3F + 1;
+        var power = SpectrumEnchantmentHelper.getLevel(drm, Enchantments.POWER, stack);
         var efficiency = SpectrumEnchantmentHelper.getLevel(drm, Enchantments.EFFICIENCY, stack);
         var world = this.getWorld();
         var user = getOwner() instanceof LivingEntity livingOwner ? livingOwner : null;
 		
 		LightShardEntity.summonBarrage(world, user, this.getPos(), target instanceof LivingEntity livingEntity ? livingEntity : null, livingEntity -> livingEntity != user, UniformIntProvider.create(5, 8 + 2 * efficiency),
-				() -> new LightShardEntity(world, user, effectMult * power, 200 + 40 * efficiency / effectMult));
+				() -> new LightShardEntity(world, user, effectMult * power * 0.3F + 1, 200 + 40 * efficiency / effectMult));
     }
 
 }

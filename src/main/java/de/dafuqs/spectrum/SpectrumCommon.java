@@ -79,6 +79,9 @@ public class SpectrumCommon implements ModInitializer {
 	@Nullable
 	public static MinecraftServer minecraftServer;
 	
+	// Miscellaneous registrars
+	public static final DeferredRegistrar FUEL_REGISTRAR = new DeferredRegistrar();
+	
 	static {
 		//Set up config
 		logInfo("Loading config file...");
@@ -96,6 +99,7 @@ public class SpectrumCommon implements ModInitializer {
 		InkColors.register();
 		InkColorMixes.register();
 		SpectrumEntityAttributes.register();
+		SpectrumLoadConditions.register();
 		
 		logInfo("Registering Component Types...");
 		SpectrumDataComponentTypes.register();
@@ -149,12 +153,14 @@ public class SpectrumCommon implements ModInitializer {
 		
 		// Recipes
 		logInfo("Registering Recipe Types...");
+		SpectrumRecipeScalings.init();
 		SpectrumFusionShrineWorldEffects.register();
 		SpectrumRecipeTypes.register();
 		SpectrumRecipeSerializers.register();
 		
 		// Loot
 		logInfo("Registering Loot Conditions & Functions...");
+		SpectrumLootContextTypes.register();
 		SpectrumLootFunctionTypes.register();
 		
 		logInfo("Setting up server side Mod Compat...");
@@ -172,8 +178,8 @@ public class SpectrumCommon implements ModInitializer {
 		SpectrumItemSubPredicateTypes.register();
 		SpectrumEntitySubPredicateTypes.register();
 		
-		logInfo("Registering Items to Fuel Registry...");
-		SpectrumItems.registerFuelRegistry();
+		logInfo("Registering Blocks and Items to Fuel Registry...");
+		FUEL_REGISTRAR.flush();
 		
 		logInfo("Registering Entities...");
 		SpectrumTrackedDataHandlerRegistry.register();
@@ -226,7 +232,7 @@ public class SpectrumCommon implements ModInitializer {
 		logInfo("Registering Dispenser, Resonance & Present Unwrap Behaviors...");
 		SpectrumDispenserBehaviors.register();
 		SpectrumPresentUnpackBehaviors.register();
-		SpectrumResonanceDropProcessorTypes.register();
+		SpectrumResonanceProcessorTypes.register();
 		
 		logInfo("Registering Resource Conditions...");
 		SpectrumResourceConditions.register();

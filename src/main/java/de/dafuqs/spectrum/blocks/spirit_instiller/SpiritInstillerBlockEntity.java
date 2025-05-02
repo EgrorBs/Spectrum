@@ -58,7 +58,7 @@ public class SpiritInstillerBlockEntity extends InWorldInteractionBlockEntity im
 	private RecipeEntry<SpiritInstillerRecipe> currentRecipe;
 	private int craftingTime;
 	private int craftingTimeTotal;
-	private boolean valid;
+	private boolean validStructure;
 	
 	protected FlowAnimator animator;
 	protected FlowData<Float> _platformY = FlowData.NULL(), _haloY = FlowData.NULL(),
@@ -72,7 +72,6 @@ public class SpiritInstillerBlockEntity extends InWorldInteractionBlockEntity im
 	
 	public static void clientTick(World world, BlockPos blockPos, BlockState blockState, @NotNull SpiritInstillerBlockEntity instiller) {
 		if (instiller.animator == null) {
-			SpiritInstillerBlock.verifyStructure(world, blockPos, null, instiller);
 			instiller.animator = FACTORY.create(FlowStates.INIT, instiller);
 		}
 		else {
@@ -87,7 +86,7 @@ public class SpiritInstillerBlockEntity extends InWorldInteractionBlockEntity im
 	private void updateAnimator() {
 		animator.tick();
 		
-		if (!valid) {
+		if (!validStructure) {
 			animator.swapState(FlowStates.MB_INVALID);
 			return;
 		}
@@ -335,8 +334,12 @@ public class SpiritInstillerBlockEntity extends InWorldInteractionBlockEntity im
 				new Vec3d(0.1D, -0.1D, 0.1D));
 	}
 	
-	public void setValid(boolean valid) {
-		this.valid = valid;
+	public void setValidStructure(boolean validStructure) {
+		if (!world.isClient()) {
+			this.validStructure = validStructure;
+			markDirty();
+			updateInClientWorld();
+		}
 	}
 	
 	@Override
@@ -346,6 +349,7 @@ public class SpiritInstillerBlockEntity extends InWorldInteractionBlockEntity im
 		this.craftingTimeTotal = nbt.getShort("CraftingTimeTotal");
 		this.inventoryChanged = true;
 		this.ownerUUID = PlayerOwned.readOwnerUUID(nbt);
+		this.validStructure = nbt.getBoolean("validStructure");
 		if (nbt.contains("MultiblockRotation")) {
 			try {
 				this.multiblockRotation = BlockRotation.valueOf(nbt.getString("MultiblockRotation").toUpperCase(Locale.ROOT));
@@ -372,6 +376,7 @@ public class SpiritInstillerBlockEntity extends InWorldInteractionBlockEntity im
 		nbt.putShort("CraftingTime", (short) this.craftingTime);
 		nbt.putShort("CraftingTimeTotal", (short) this.craftingTimeTotal);
 		nbt.putString("MultiblockRotation", this.multiblockRotation.toString());
+		nbt.putBoolean("validStructure", this.validStructure);
 		if (this.upgrades != null) {
 			nbt.put("Upgrades", this.upgrades.toNbt());
 		}
@@ -386,18 +391,6 @@ public class SpiritInstillerBlockEntity extends InWorldInteractionBlockEntity im
 	
 	
 	// Called when the chunk is first loaded to initialize this on the clients
-	@Override
-	public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
-		NbtCompound nbtCompound = new NbtCompound();
-		Inventories.writeNbt(nbtCompound, this.getItems(), registryLookup);
-		nbtCompound.putShort("CraftingTime", (short) this.craftingTime);
-		nbtCompound.putShort("CraftingTimeTotal", (short) this.craftingTimeTotal);
-		nbtCompound.putString("MultiblockRotation", this.multiblockRotation.toString());
-		if (this.currentRecipe != null && checkRecipeRequirements(world, this.pos, this)) {
-			nbtCompound.putString("CurrentRecipe", this.currentRecipe.id().toString());
-		}
-		return nbtCompound;
-	}
 	
 	private void doChimeParticles(@NotNull World world) {
 		doChimeInstillingParticles(world, pos.add(getItemBowlHorizontalPositionOffset(false).up(3)));
