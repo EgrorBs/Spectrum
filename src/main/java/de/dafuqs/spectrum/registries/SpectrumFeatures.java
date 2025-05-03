@@ -23,6 +23,7 @@ public class SpectrumFeatures {
 	public static Feature<FossilFeatureConfig> EXPOSED_FOSSIL;
 	public static Feature<WallPatchFeatureConfig> WALL_PATCH;
 	public static Feature<AshDunesFeatureConfig> ASH_DUNES;
+	public static Feature<FluidFloodFeatureConfig> FLUID_FLOOD;
 
 	public static void register() {
 		WEIGHTED_RANDOM_FEATURE = registerFeature("weighted_random_feature", new WeightedRandomFeature(WeightedRandomFeatureConfig.CODEC));
@@ -41,6 +42,7 @@ public class SpectrumFeatures {
 		EXPOSED_FOSSIL = registerFeature("exposed_fossil", new ExposedFossilFeature(FossilFeatureConfig.CODEC));
 		WALL_PATCH = registerFeature("wall_patch", new WallPatchFeature(WallPatchFeatureConfig.CODEC));
 		ASH_DUNES = registerFeature("ash_dunes", new AshDunesFeature(AshDunesFeatureConfig.CODEC));
+		FLUID_FLOOD = registerFeature("fluid_flood", new FluidFloodFeature(FluidFloodFeatureConfig.CODEC));
 	}
 	
 	private static <C extends FeatureConfig, F extends Feature<C>> F registerFeature(String name, F feature) {

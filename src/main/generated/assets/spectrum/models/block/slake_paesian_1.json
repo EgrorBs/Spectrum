@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "spectrum:block/flayed_earth",
+    "side": "spectrum:block/slake_paesian_side_1",
+    "top": "spectrum:block/slake_paesian_top_1"
+  }
+}

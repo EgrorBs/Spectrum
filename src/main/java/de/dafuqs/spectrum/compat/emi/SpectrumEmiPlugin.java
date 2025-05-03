@@ -220,10 +220,10 @@ public class SpectrumEmiPlugin implements EmiPlugin {
 				.requiredAdvancement(GooConvertingRecipe.UNLOCK_IDENTIFIER)
 				.build());
 		addRecipeSafe(registry, () -> SpectrumWorldInteractionRecipe.customBuilder()
-				.id(syntheticId("world/fluid_interaction", SpectrumBlocks.ROTTEN_GROUND))
+				.id(syntheticId("world/fluid_interaction", SpectrumBlocks.FLAYED_EARTH))
 				.leftInput(dragonrotCatalyst)
 				.rightInput(liquidCrystalCatalyst, false)
-				.output(EmiStack.of(SpectrumBlocks.ROTTEN_GROUND))
+				.output(EmiStack.of(SpectrumBlocks.FLAYED_EARTH))
 				.requiredAdvancement(DragonrotConvertingRecipe.UNLOCK_IDENTIFIER)
 				.requiredAdvancement(LiquidCrystalConvertingRecipe.UNLOCK_IDENTIFIER)
 				.build());

@@ -950,7 +950,8 @@ public class SpectrumItemGroups {
 				entries.add(SpectrumBlocks.OVERGROWN_BLACKSLAG);
 				entries.add(SpectrumBlocks.SHIMMEL);
 				entries.add(SpectrumBlocks.ASHEN_BLACKSLAG);
-				entries.add(SpectrumBlocks.ROTTEN_GROUND);
+				entries.add(SpectrumBlocks.FLAYED_EARTH);
+				entries.add(SpectrumBlocks.SLAKE_PAESIAN);
 				entries.add(SpectrumBlocks.SLATE_NOXSHROOM);
 				entries.add(SpectrumBlocks.SLATE_NOXCAP_BLOCK);
 				entries.add(SpectrumBlocks.SLATE_NOXCAP_STEM);

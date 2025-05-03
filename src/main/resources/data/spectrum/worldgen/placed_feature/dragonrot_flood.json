@@ -1,0 +1,8 @@
+{
+  "feature": "spectrum:dragonrot_flood",
+  "placement": [
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

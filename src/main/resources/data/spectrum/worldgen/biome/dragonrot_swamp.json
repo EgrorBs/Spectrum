@@ -7,7 +7,7 @@
     "fog_color": 9384991,
     "water_color": 11998731,
     "water_fog_color": 11998731,
-    "grass_color": 12340777,
+    "grass_color": 8740919,
     "foliage_color": 14895399,
     "grass_color_modifier": "none",
     "mood_sound": {
@@ -90,10 +90,10 @@
     ]
   },
   "features": [
-    [],
     [
-      "spectrum:lake_goo_underground",
-      "spectrum:lake_dragonrot_underground"
+      "spectrum:dragonrot_flood"
+    ],
+    [
     ],
     [
       "spectrum:dd_downstone_sloped",

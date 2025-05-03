@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "spectrum:block/slake_paesian"
+      },
+      {
+        "model": "spectrum:block/slake_paesian_1"
+      },
+      {
+        "model": "spectrum:block/slake_paesian_2"
+      }
+    ]
+  }
+}

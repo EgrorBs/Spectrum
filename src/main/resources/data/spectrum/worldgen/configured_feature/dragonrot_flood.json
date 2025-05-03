@@ -1,0 +1,27 @@
+{
+  "type": "spectrum:fluid_flood",
+  "config": {
+    "fill_state": {
+      "Name": "spectrum:dragonrot"
+    },
+    "start_height": {
+      "type": "minecraft:constant",
+      "value": -282
+    },
+    "shore_size": {
+      "type": "minecraft:constant",
+      "value": 3
+    },
+    "depth": {
+      "type": "minecraft:constant",
+      "value": 4
+    },
+    "bank_states": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "spectrum:black_sludge"
+      }
+    },
+    "biome": "spectrum:dragonrot_swamp"
+  }
+}
