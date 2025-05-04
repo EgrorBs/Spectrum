@@ -44,7 +44,7 @@ public class FluidFloodFeature extends Feature<FluidFloodFeatureConfig> {
 					if (!world.getBiome(point).matchesKey(biome))
 						continue;
 					
-					if (world.getBlockState(point).isReplaceable()) {
+					if (shouldRemove(world.getBlockState(point))) {
 						var placedState = fillState;
 						
 						if (yOffset == depth) {
@@ -55,6 +55,11 @@ public class FluidFloodFeature extends Feature<FluidFloodFeatureConfig> {
 						}
 						
 						setBlockState(world, point, placedState);
+
+						if (yOffset == 0) {
+							point.move(Direction.UP);
+							setBlockStateIf(world, point, Blocks.AIR.getDefaultState(), FluidFloodFeature::shouldRemove);
+						}
 					}
 					else if (world.getBlockState(point.up()).isOf(fillState.getBlock())) {
 						setBlockState(world, point, SpectrumBlocks.BLACKSLAG.getDefaultState());
@@ -68,7 +73,11 @@ public class FluidFloodFeature extends Feature<FluidFloodFeatureConfig> {
 		
 		return true;
 	}
-	
+
+	private static boolean shouldRemove(BlockState state) {
+		return state.isReplaceable() || state.isIn(SpectrumBlockTags.DEEPER_DOWN_FLOOD_REPLACEABLES);
+	}
+
 	private static boolean isOnBiomeBorder(StructureWorldAccess world, RegistryKey<Biome> key, BlockPos center) {
 		BlockPos.Mutable mutable = center.mutableCopy();
 		

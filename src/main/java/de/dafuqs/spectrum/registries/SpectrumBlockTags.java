@@ -52,6 +52,7 @@ public class SpectrumBlockTags {
 	public static final TagKey<Block> BLACKSLAG_ORE_REPLACEABLES = of("blackslag_ore_replaceables");
 	public static final TagKey<Block> DEEPER_DOWN_FEATURE_REPLACEABLES = of("deeper_down_feature_replaceables");
 	public static final TagKey<Block> DEEPER_DOWN_FLOODABLES = of("deeper_down_floodables");
+	public static final TagKey<Block> DEEPER_DOWN_FLOOD_REPLACEABLES = of("deeper_down_flood_replaceables");
 	
 	// MISC
 	public static final TagKey<Block> MULTITOOL_MINEABLE = of("multitool_mineable");
