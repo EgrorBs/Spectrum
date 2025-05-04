@@ -41,7 +41,10 @@ public class FluidFloodFeature extends Feature<FluidFloodFeatureConfig> {
 				for (int yOffset = 0; yOffset <= depth; yOffset++) {
 					point.setY(fill - yOffset);
 					
-					if (world.isAir(point)) {
+					if (!world.getBiome(point).matchesKey(biome))
+						continue;
+					
+					if (world.getBlockState(point).isReplaceable()) {
 						var placedState = fillState;
 						
 						if (yOffset == depth) {

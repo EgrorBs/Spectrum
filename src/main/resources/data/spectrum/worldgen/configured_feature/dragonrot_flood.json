@@ -6,7 +6,7 @@
     },
     "start_height": {
       "type": "minecraft:constant",
-      "value": -282
+      "value": -283
     },
     "shore_size": {
       "type": "minecraft:constant",
