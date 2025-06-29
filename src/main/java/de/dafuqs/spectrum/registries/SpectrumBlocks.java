@@ -564,7 +564,7 @@ public class SpectrumBlocks {
 			.withBlockModel((ctx, block) -> MultiVariantGenerator.multiVariant(block).with(SpectrumModelHelper.createBooleanModelMap(BottomlessBundleBlock.LOCKED, ModelLocationUtils.getModelLocation(block, "_locked"), ModelLocationUtils.getModelLocation(block, "_unlocked"))))
 			.withPredefinedItemModel());
 	
-	public static final Block PERSISTENT_LIGHT = register(singleton(block("persistent_light", new PersistentLightBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LIGHT).sound(SpectrumBlockSoundGroups.LIGHT).instabreak())), SpectrumTexturedModels.particle(SpectrumTextures.SHIMMERSTONE_LIGHT)));
+	public static final Block PERSISTENT_LIGHT = register(singleton(block("wand_light", new PersistentLightBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LIGHT).sound(SpectrumBlockSoundGroups.LIGHT).instabreak())), SpectrumTexturedModels.particle(SpectrumTextures.SHIMMERSTONE_LIGHT)));
 	public static final Block TRANSIENT_LIGHT = register(parented(block("transient_light", new TransientLightBlock(BlockBehaviour.Properties.ofFullCopy(PERSISTENT_LIGHT).randomTicks())), b -> PERSISTENT_LIGHT));
 	
 	private static BlockBehaviour.Properties decay(MapColor mapColor, SoundType soundGroup, float strength, float resistance, PushReaction pistonBehavior) {
