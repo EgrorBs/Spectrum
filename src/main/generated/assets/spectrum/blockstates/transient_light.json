@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "spectrum:block/wand_light"
+      "model": "spectrum:block/persistent_light"
     }
   }
 }
